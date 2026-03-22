@@ -43,11 +43,11 @@ export async function buildFeed(env: Env, executionCtx: ExecutionContext) {
     favicon: `https://${DOMAIN}/favicon.ico`,
     copyright: `All rights reserved ${year}, ${siteConfig.author}`,
     generator: siteConfig.title,
-    author: {
-      name: siteConfig.author,
-      email: ADMIN_EMAIL,
-      link: `https://${DOMAIN}/`,
-    },
+    // author: {
+    //   name: siteConfig.author,
+    //   email: ADMIN_EMAIL,
+    //   link: `https://${DOMAIN}/`,
+    // },
   });
 
   posts.forEach((post) => {
@@ -57,13 +57,13 @@ export async function buildFeed(env: Env, executionCtx: ExecutionContext) {
       link: `https://${DOMAIN}/post/${encodeURIComponent(post.slug)}`,
       description: post.summary ?? "",
       content: convertToPlainText(post.contentJson),
-      author: [
-        {
-          name: siteConfig.author,
-          email: ADMIN_EMAIL,
-          link: `https://${DOMAIN}/`,
-        },
-      ],
+      // author: [
+      //   {
+      //     name: siteConfig.author,
+      //     email: ADMIN_EMAIL,
+      //     link: `https://${DOMAIN}/`,
+      //   },
+      // ],
       date: post.publishedAt ?? post.updatedAt,
     });
   });
